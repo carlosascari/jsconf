@@ -111,7 +111,7 @@ exports.load = function (filename, context) {
 exports.parse = function (jsconf, context) {
     var jsconf = jsconf.replace(REGEX_C_STYLE_COMMENTS, '')
     var sandbox = context || this.context
-    var jscript = vm.createScript(format('result = (%s)', jsconf))
+    var jscript = vm.createScript(format('var result = (%s)', jsconf))
     jscript.runInNewContext(sandbox)
     return sandbox.result
 }
